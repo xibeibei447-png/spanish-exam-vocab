@@ -63,13 +63,14 @@
     </section>
 
     <section class="section quiz-section" id="quiz">
-      <div class="section-heading"><div><p class="eyebrow gold">TARGET PRACTICE</p><h2>专项练：像考试那样想</h2></div><p>答案不区分大小写；漏重音也能判对，但会提醒你。</p></div>
+      <div class="section-heading"><div><p class="eyebrow gold">TARGET PRACTICE</p><h2>专项练：像考试那样想</h2></div><p>第一题按四选一练习；冠词和动词保留输入作答。</p></div>
       <div class="quiz-tabs" role="tablist"><button class="active" data-mode="noun" role="tab">名词填空</button><button data-mode="article" role="tab">冠词</button><button data-mode="verb" role="tab">动词变位</button></div>
       <div class="quiz-card">
         <div class="quiz-meta"><span id="quiz-mode-label">名词填空</span><span id="quiz-score">0 / 0</span></div>
-        <p class="quiz-instruction" id="quiz-instruction">根据原句，填入一个名词</p>
+        <p class="quiz-instruction" id="quiz-instruction">根据课文原句，从四项中选择</p>
         <h3 id="quiz-prompt"></h3>
         <p class="quiz-sub" id="quiz-sub"></p>
+        <div class="choice-grid" id="quiz-choices"></div>
         <form id="quiz-form"><label class="sr-only" for="quiz-answer">你的答案</label><input id="quiz-answer" autocomplete="off" spellcheck="false" placeholder="在这里作答…"><button class="button primary" type="submit">检查</button></form>
         <div class="feedback" id="quiz-feedback" aria-live="polite"></div>
         <button class="text-button" id="next-question" type="button" hidden>下一题 →</button>
@@ -77,7 +78,16 @@
     </section>
 
     <section class="section cloze-section" id="cloze">
-      <div class="section-heading light"><div><p class="eyebrow gold">UNIT 5 · UN RESFRIADO</p><h2>完形不是散词，是一条故事线</h2></div><p>爱运动 → 出汗吹风 → 症状 → 看医生 → 好转</p></div>
+      <div class="section-heading light"><div><p class="eyebrow gold">UNIT 5 · UN RESFRIADO</p><h2>第四题：四选一完形</h2></div><p>20 道高干扰预测题，按课文顺序覆盖身份、运动、症状、检查和治疗。</p></div>
+      <div class="cloze-game">
+        <div class="quiz-meta light-meta"><span id="cloze-progress">第 1 / 20 题</span><span>得分 <b id="cloze-score">0</b> · 错题 <b id="cloze-wrong">0</b></span></div>
+        <p class="quiz-instruction">选择最符合课文原句的一项</p>
+        <h3 id="cloze-prompt"></h3>
+        <div class="choice-grid dark-choices" id="cloze-choices"></div>
+        <div class="feedback" id="cloze-feedback" aria-live="polite"></div>
+        <button class="text-button gold-button" id="cloze-next" type="button" hidden>下一题 →</button>
+      </div>
+      <p class="story-label">答题后，按故事顺序复盘</p>
       <div class="story-line" id="story-line"></div>
       <details class="vocab-drawer"><summary>展开第五课症状词库 <span>24 个</span></summary><div class="mini-vocab" id="cloze-vocab"></div></details>
     </section>
