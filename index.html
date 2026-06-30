@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#16352f">
+  <title>西语考试 · 冲刺词场</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="返回首页"><span class="brand-mark">¡!</span><span>冲刺词场</span></a>
+    <nav class="desktop-nav" aria-label="主要导航">
+      <a href="#cards">单词卡</a><a href="#quiz">专项练</a><a href="#cloze">完形</a><a href="#translation">翻译</a><a href="#library">词库</a>
+    </nav>
+    <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="true">发音 开</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">EXAM SPRINT · 离线可用</p>
+        <h1>别背一片海。<br><em>背会老师会捞的鱼。</em></h1>
+        <p class="lead">围绕六个题型，把课本原句拆成能反复练的词、搭配和句块。你的答题记录只保存在这台设备里。</p>
+        <div class="hero-actions"><a class="button primary" href="#cards">开始今日复习</a><a class="button ghost" href="#priority">先看老师点名</a></div>
+      </div>
+      <aside class="exam-map" aria-label="六类题型">
+        <div class="map-title"><span>本次考试</span><strong>6</strong><small>题型</small></div>
+        <ol>
+          <li><span>01</span>名词选词填空</li><li><span>02</span>冠词填空</li><li><span>03</span>动词变位</li>
+          <li><span>04</span>第五课完形</li><li><span>05</span>中译西</li><li><span>06</span>第16课西译中</li>
+        </ol>
+      </aside>
+    </section>
+
+    <section class="stats-wrap" aria-label="学习进度">
+      <article><span>今日已复习</span><strong id="stat-reviewed">0</strong><small>张</small></article>
+      <article><span>已掌握</span><strong id="stat-mastered">0</strong><small>词</small></article>
+      <article><span>连续学习</span><strong id="stat-streak">1</strong><small>天</small></article>
+      <div class="progress-cell"><span>总进度</span><strong id="progress-label">0%</strong><div class="progress"><i id="progress-bar"></i></div></div>
+    </section>
+
+    <section class="section priority" id="priority">
+      <div class="section-heading"><div><p class="eyebrow coral">TEACHER'S PICKS</p><h2>老师点名的 5 个空</h2></div><p>先把这五个拿稳。点击卡片可听原句。</p></div>
+      <div class="priority-grid" id="priority-grid"></div>
+    </section>
+
+    <section class="section cards-section" id="cards">
+      <div class="section-heading"><div><p class="eyebrow mint">FLASHCARDS</p><h2>今天，先背这一摞</h2></div><div class="segmented" role="group" aria-label="卡片类别"><button class="active" data-deck="nouns">名词</button><button data-deck="cloze">完形词</button><button data-deck="passage">第16课</button></div></div>
+      <div class="card-stage">
+        <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="翻转单词卡">
+          <div class="flashcard-inner">
+            <div class="flash-face front"><span class="card-count" id="card-count">01 / 01</span><button class="speak" id="speak-card" type="button" aria-label="播放西语发音">◖))</button><p class="card-kicker" id="card-kicker">名词 · 高频</p><h3 id="card-es">el matrimonio</h3><p class="card-hint">点击翻面，看中文与原句</p></div>
+            <div class="flash-face back"><span class="card-count">答案</span><h3 id="card-zh">婚姻</h3><p id="card-example">formar un buen matrimonio</p><p class="card-note" id="card-note"></p></div>
+          </div>
+        </div>
+        <div class="card-controls">
+          <button class="grade again" data-grade="again" type="button"><span>↺</span>再来一次</button>
+          <button class="grade fuzzy" data-grade="fuzzy" type="button"><span>≈</span>有点模糊</button>
+          <button class="grade know" data-grade="know" type="button"><span>✓</span>记住了</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quiz-section" id="quiz">
+      <div class="section-heading"><div><p class="eyebrow gold">TARGET PRACTICE</p><h2>专项练：像考试那样想</h2></div><p>答案不区分大小写；漏重音也能判对，但会提醒你。</p></div>
+      <div class="quiz-tabs" role="tablist"><button class="active" data-mode="noun" role="tab">名词填空</button><button data-mode="article" role="tab">冠词</button><button data-mode="verb" role="tab">动词变位</button></div>
+      <div class="quiz-card">
+        <div class="quiz-meta"><span id="quiz-mode-label">名词填空</span><span id="quiz-score">0 / 0</span></div>
+        <p class="quiz-instruction" id="quiz-instruction">根据原句，填入一个名词</p>
+        <h3 id="quiz-prompt"></h3>
+        <p class="quiz-sub" id="quiz-sub"></p>
+        <form id="quiz-form"><label class="sr-only" for="quiz-answer">你的答案</label><input id="quiz-answer" autocomplete="off" spellcheck="false" placeholder="在这里作答…"><button class="button primary" type="submit">检查</button></form>
+        <div class="feedback" id="quiz-feedback" aria-live="polite"></div>
+        <button class="text-button" id="next-question" type="button" hidden>下一题 →</button>
+      </div>
+    </section>
+
+    <section class="section cloze-section" id="cloze">
+      <div class="section-heading light"><div><p class="eyebrow gold">UNIT 5 · UN RESFRIADO</p><h2>完形不是散词，是一条故事线</h2></div><p>爱运动 → 出汗吹风 → 症状 → 看医生 → 好转</p></div>
+      <div class="story-line" id="story-line"></div>
+      <details class="vocab-drawer"><summary>展开第五课症状词库 <span>24 个</span></summary><div class="mini-vocab" id="cloze-vocab"></div></details>
+    </section>
+
+    <section class="section translation-section" id="translation">
+      <div class="section-heading"><div><p class="eyebrow coral">TRANSLATION</p><h2>整句太重，就按句块拎</h2></div><div class="segmented"><button class="active" data-translation="c2s">中 → 西</button><button data-translation="s2c">西 → 中</button></div></div>
+      <div class="translation-workbench">
+        <div class="translation-list" id="translation-list"></div>
+        <article class="translation-focus">
+          <span class="question-number" id="translation-number">01</span>
+          <p class="source-label" id="source-label">请译成西班牙语</p>
+          <h3 id="translation-source"></h3>
+          <button class="button ghost dark" id="reveal-translation" type="button">显示参考译文</button>
+          <div id="translation-answer" class="translation-answer" hidden><p></p><div class="chunks"></div><button class="speak-inline" type="button">听参考译文</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section library-section" id="library">
+      <div class="section-heading"><div><p class="eyebrow mint">WORD LIBRARY</p><h2>考前词库</h2></div><label class="search"><span>⌕</span><input id="library-search" placeholder="搜西语、中文或搭配"></label></div>
+      <div class="library-filters"><button class="active" data-filter="all">全部</button><button data-filter="priority">老师点名</button><button data-filter="traffic">交通</button><button data-filter="home">家庭</button><button data-filter="health">健康</button></div>
+      <div class="library-grid" id="library-grid"></div>
+    </section>
+  </main>
+
+  <nav class="mobile-nav" aria-label="手机导航"><a href="#home">首页</a><a href="#cards">卡片</a><a href="#quiz">练习</a><a href="#translation">翻译</a></nav>
+  <footer><strong>冲刺词场</strong><p>内容依据你提供的课文、翻译练习与考试重点整理。</p><button id="reset-progress" type="button">重置学习记录</button></footer>
+  <script src="data.js"></script><script src="app.js"></script>
+</body>
+</html>
